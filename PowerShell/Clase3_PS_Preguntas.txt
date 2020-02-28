@@ -1,0 +1,88 @@
+## EJERCICIOS
+
+1. Cree dos archivos de texto similares (con una o dos líneas diferentes).
+   Compárelos empleando ``diff``.
+	Se usa new-item para crear dos items tipo file
+	Archivo1: Este `n es `n archivo `n numero `n uno
+	Archivo2: Este `n es `n file `n numero `n dos
+	Al usar diff con archivo como referente, se obtiene
+	InputObject	SideIndicator
+	file		->
+	dos		->
+	archivo		<-
+	uno		<-
+	lo que quiere decir que en el archivo2 se sustituye la linea con "uno" por "dos" y la linea con "archivo" por "file".
+
+2. Qué ocurre si se ejecuta:
+   ```powershell
+   get-service | export-csv servicios.csv | out-file
+   ```
+   Por qué?
+	Se obtiene un error. Porque como indica el mensaje de error no se ha indicado el valor para el parametro -path y no puede ser null.
+	el -path es la ruta de salida del fichero
+
+
+3. Cómo haría para crear un archivo delimitado por puntos y comas (;)?
+   PISTA: Se emplea ``export-csv``, pero con un parámetro adicional.
+	por defecto un csv se delimita por comas como indica su nombre, para cambiar esto se debe especificar el parametro -delimiter y poner ; entre comillas
+
+4. ``Export-cliXML`` y ``Export-CSV`` modifican el sistema, porque pueden crear
+   y sobreescribir archivos. Existe algún parámetro que evite la
+   sobreescritura de un archivo existente? Existe algún parámetro que
+   permita que el comando pregunte antes de sobresscribir un archivo?
+	Sí lo que se desea es añadir info sin perder lo anterior se usa el parametro -Append
+	Sí definitivamente no se desea modificar el archivo en caso de que exista se usa el parametro -NoClobber
+	
+	ambos comandos poseen el parametro -Confirm que pide al confirmación antes de correr.
+
+5. Windows emplea configuraciones regionales, lo que incluye el separador de
+   listas. En Windows en inglés, el separador de listas es la coma (,).
+   Cómo se le dice a ``Export-CSV`` que emplee el separador del sistema en lugar
+   de la coma?
+	usando el parametro -UseCulture el comando tomara el separador de lista del sis.
+	Para averiguar el separador en uso se puede usar el comando (Get-Culture).TextInfo.ListSeparator
+
+6. Identifique un cmdlet que permita generar un número aleatorio.
+	el cmdlet Get-Random lo permite
+
+7. Identifique un cmdlet que despliegue la fecha y hora actuales.
+	el cmdlet get-date permite obetener la fecha y hora
+
+8. Qué tipo de objeto produce el cmdlet de la pregunta 7?
+	produce un DateTime
+
+9. Usando el cmdlet de la pregunta 7 y ``select-object``, despliegue solamente
+   el día de la semana, así:
+
+```console
+   DayOfWeek
+   ---------
+    Thursday
+```
+	se usa get-date | select-object DayOfWeek  . aqui la predicción de powershell favorece a explorar las propiedades del objeto resultado
+
+
+10. Identifique un cmdlet que muestre información acerca de parches (hotfixes)
+    instalados en el sistema.
+	el cmdlet get-hotfix permite consultar los hotfixes de la maquina local y maquinas remotas
+
+11. Empleando el cmdlet de la pregunta 10, muestre una lista de parches
+    instalados. Luego extienda la expresión para ordenar la lista por fecha
+    de instalación, y muestre en pantalla únicamente la fecha de instalación,
+    el usuario que instaló el parche, y el ID del parche. Recuerde examinar
+    los nombres de las propiedades.
+	get-hotFix | sort InstaledOn | select-Object InstaledOn, InstaledBy, HotFixId
+
+12. Complemente la solución a la pregunta 11, para que el sistema ordene los
+    resultados por la descripción del parche, e incluya en el listado la
+    descripción, el ID del parche, y la fecha de instalación.
+    Escriba los resultados a un archivo HTML.
+	Get-HotFix | sort Description | Select-Object description , HotFixId,InstalledOn | ConvertTo-Html | Out-File -FilePath hotfixes.html
+
+13. Muestre una lista de las 50 entradas más nuevas del log de eventos System.
+    Ordene la lista de modo que las entradas más antiguas aparezcan primero;
+    las entradas producidas al mismo tiempo deben ordenarse por número índice.
+    Muestre el número índice, la hora y la fuente para cada entrada. Escriba
+    esta información en un archivo de texto plano.
+
+	Get-EventLog -LogName System -Newest 50 | sort -Property TimeGenerated,Index | select Index,TimeGenerated,Source | Out-File eventlogsis.txt

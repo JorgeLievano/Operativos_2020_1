@@ -1,0 +1,1824 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20200227204940
+Nombre de usuario: LAPTOP-LKUTTDBQ\JORGE
+Usuario RunAs: LAPTOP-LKUTTDBQ\JORGE
+Nombre de la configuración: 
+Máquina: LAPTOP-LKUTTDBQ (Microsoft Windows NT 10.0.18362.0)
+Aplicación host: C:\WINDOWS\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+Id. de proceso: 15712
+PSVersion: 5.1.18362.628
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.18362.628
+BuildVersion: 10.0.18362.628
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\JORGE\Documents\PowerShell_transcript.LAPTOP-LKUTTDBQ.S9iy0mxZ.20200227204940.txt
+PS C:\WINDOWS\system32> help *item*
+
+Name                              Category  Module                    Synopsis
+----                              --------  ------                    --------
+Clear-Item                        Cmdlet    Microsoft.PowerShell.M... Clears the contents of an item, but does not...
+Clear-ItemProperty                Cmdlet    Microsoft.PowerShell.M... Clears the value of a property but does not ...
+Copy-Item                         Cmdlet    Microsoft.PowerShell.M... Copies an item from one location to another.
+Copy-ItemProperty                 Cmdlet    Microsoft.PowerShell.M... Copies a property and value from a specified...
+Get-ChildItem                     Cmdlet    Microsoft.PowerShell.M... Gets the items and child items in one or mor...
+Get-ControlPanelItem              Cmdlet    Microsoft.PowerShell.M... Gets control panel items.
+Get-Item                          Cmdlet    Microsoft.PowerShell.M... Gets the item at the specified location.
+Get-ItemProperty                  Cmdlet    Microsoft.PowerShell.M... Gets the properties of a specified item.
+Get-ItemPropertyValue             Cmdlet    Microsoft.PowerShell.M... Gets the value for one or more properties of...
+Invoke-Item                       Cmdlet    Microsoft.PowerShell.M... Performs the default action on the specified...
+Move-Item                         Cmdlet    Microsoft.PowerShell.M... Moves an item from one location to another.
+Move-ItemProperty                 Cmdlet    Microsoft.PowerShell.M... Moves a property from one location to another.
+New-Item                          Cmdlet    Microsoft.PowerShell.M... Creates a new item.
+New-ItemProperty                  Cmdlet    Microsoft.PowerShell.M... Creates a new property for an item and sets ...
+Remove-Item                       Cmdlet    Microsoft.PowerShell.M... Deletes the specified items.
+Remove-ItemProperty               Cmdlet    Microsoft.PowerShell.M... Deletes the property and its value from an i...
+Rename-Item                       Cmdlet    Microsoft.PowerShell.M... Renames an item in a Windows PowerShell prov...
+Rename-ItemProperty               Cmdlet    Microsoft.PowerShell.M... Renames a property of an item.
+Set-Item                          Cmdlet    Microsoft.PowerShell.M... Changes the value of an item to the value sp...
+Set-ItemProperty                  Cmdlet    Microsoft.PowerShell.M... Creates or changes the value of a property o...
+Show-ControlPanelItem             Cmdlet    Microsoft.PowerShell.M... Opens control panel items.
+Get-TestDriveItem                 Function  Pester                    ...
+Set-DAEntryPointTableItem         Function  DirectAccessClientComp... ...
+Get-DAEntryPointTableItem         Function  DirectAccessClientComp... ...
+Remove-DAEntryPointTableItem      Function  DirectAccessClientComp... ...
+Reset-DAEntryPointTableItem       Function  DirectAccessClientComp... ...
+New-DAEntryPointTableItem         Function  DirectAccessClientComp... ...
+Rename-DAEntryPointTableItem      Function  DirectAccessClientComp... ...
+
+
+PS C:\WINDOWS\system32> help New-Item
+
+NOMBRE
+    New-Item
+
+SINOPSIS
+    Creates a new item.
+
+
+SINTAXIS
+    New-Item [[-Path] <String[]>] [-Confirm] [-Credential <PSCredential>] [-Force] [-ItemType <String>] -Name
+    <String> [-UseTransaction] [-Value <Object>] [-WhatIf] [<CommonParameters>]
+
+    New-Item [-Path] <String[]> [-Confirm] [-Credential <PSCredential>] [-Force] [-ItemType <String>]
+    [-UseTransaction] [-Value <Object>] [-WhatIf] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The New-Item cmdlet creates a new item and sets its value. The types of items that can be created depend on the
+    location of the item. For example, in the file system, New-Item creates files and folders. In the registry,
+    New-Item creates registry keys and entries. New-Item can also set the value of the items that it creates. For
+    example, when it creates a new file, New-Item can add initial content to the file.
+
+
+VÍNCULOS RELACIONADOS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821604
+    Clear-Item
+    Copy-Item
+    Get-Item
+    Invoke-Item
+    Move-Item
+    Remove-Item
+    Rename-Item
+    Set-Item
+
+NOTAS
+    Para ver los ejemplos, escriba: "get-help New-Item -examples".
+    Para obtener más información, escriba: "get-help New-Item -detailed".
+    Para obtener información técnica, escriba: "get-help New-Item -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help New-Item -online"
+
+
+PS C:\WINDOWS\system32> get-help new-item -Examples
+
+NOMBRE
+    New-Item
+
+SINOPSIS
+    Creates a new item.
+
+
+    Example 1: Create a file in the current directory
+
+    PS C:\>New-Item -Path . -Name "testfile1.txt" -ItemType "file" -Value "This is a text string."
+
+    This command creates a text file that is named testfile1.txt in the current directory. The dot (.) in the value
+    of the Path parameter indicates the current directory. The quoted text that follows the Value parameter is added
+    to the file as content.
+    Example 2: Create a directory
+
+    PS C:\>New-Item -Path "c:\" -Name "logfiles" -ItemType "directory"
+
+    This command creates a directory named Logfiles in the C: drive. The ItemType parameter specifies that the new
+    item is a directory, not a file or other file system object.
+    Example 3: Create a profile
+
+    PS C:\>New-Item -Path $profile -ItemType "file" -Force
+
+    This command creates a Windows PowerShell profile in the path that is specified by the $profile variable.
+
+    You can use profiles to customize Windows PowerShell. $Profile is an automatic (built-in) variable that stores
+    the path and file name of the CurrentUser/CurrentHost profile. By default, the profile does not exist, even
+    though Windows PowerShell stores a path and file name for it.
+
+    In this command, the $profile variable represents the path of the file. ItemType parameter specifies that the
+    command creates a file. The Force parameter lets you create a file in the profile path, even when the
+    directories in the path do not exist. Windows PowerShell creates them.
+
+    After you use this command to create a profile, you can enter aliases, functions, and scripts in the profile to
+    customize your shell.
+
+    For more information, see about_Automatic_Variables and about_Profiles.
+    Example 4: Create a directory in a different directory
+
+    PS C:\>New-Item -ItemType "directory" -Path "c:\ps-test\scripts"
+
+    This command creates a new Scripts directory in the C:\PS-Test directory.
+
+    The name of the new directory item, Scripts, is included in the value of Path parameter, instead of being
+    specified in the value of Name . As indicated by the syntax, either command form is valid.
+    Example 5: Create multiple files
+
+    PS C:\>New-Item -ItemType "file" -Path "c:\ps-test\test.txt", "c:\ps-test\Logs\test.log"
+
+    This command creates files in two different directories. Because Path takes multiple strings, you can use it to
+    create multiple items.
+
+
+
+PS C:\WINDOWS\system32> New-Item
+>> ErrorTerminación(): "Se ha detenido la canalización."
+>> ErrorTerminación(): "Se ha detenido la canalización."
+PS C:\WINDOWS\system32> ErrorTerminación(): "Se ha detenido la canalización."
+PS C:\WINDOWS\system32> New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n es `n archivo `n numero `n uno"
+
+
+    Directorio: C:\WINDOWS\system32
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----    27/02/2020  11:32 p. m.             34 archivo1.txt
+
+
+PS C:\WINDOWS\system32> New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n es `n file `n numero `n dos"
+New-Item : El archivo 'C:\WINDOWS\system32\archivo1.txt' ya existe.
+En línea: 1 Carácter: 1
++ New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\WINDOWS\system32\archivo1.txt:String) [New-Item], IOException
+    + FullyQualifiedErrorId : NewItemIOError,Microsoft.PowerShell.Commands.NewItemCommand
+New-Item : El archivo 'C:\WINDOWS\system32\archivo1.txt' ya existe.
+En línea: 1 Carácter: 1
++ New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\WINDOWS\system32\archivo1.txt:String) [New-Item], IOException
+    + FullyQualifiedErrorId : NewItemIOError,Microsoft.PowerShell.Commands.NewItemCommand
+
+PS C:\WINDOWS\system32> New-Item -Path . -Name "archivo2.txt" -ItemType File -Value "Este `n es `n file `n numero `n dos"
+
+
+    Directorio: C:\WINDOWS\system32
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----    27/02/2020  11:33 p. m.             31 archivo2.txt
+
+
+PS C:\WINDOWS\system32> type archivo1.txt
+Este
+ es
+ archivo
+ numero
+ uno
+PS C:\WINDOWS\system32> type archivo2.txt
+Este
+ es
+ file
+ numero
+ dos
+PS C:\WINDOWS\system32> help diff
+
+NOMBRE
+    Compare-Object
+
+SINOPSIS
+    Compares two sets of objects.
+
+
+SINTAXIS
+    Compare-Object [-ReferenceObject] <PSObject[]> [-DifferenceObject] <PSObject[]> [-CaseSensitive] [-Culture
+    <String>] [-ExcludeDifferent] [-IncludeEqual] [-PassThru] [-Property <Object[]>] [-SyncWindow <Int32>]
+    [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Compare-Object cmdlet compares two sets of objects. One set of objects is the "reference set," and the other
+    set is the "difference set."
+
+    The result of the comparison indicates whether a property value appeared only in the object from the reference
+    set (indicated by the <= symbol), only in the object from the difference set (indicated by the => symbol) or, if
+    the IncludeEqual parameter is specified, in both objects (indicated by the == symbol).
+
+    If the reference set or the difference set is null ($null), this cmdlet generates a terminating error.
+
+
+VÍNCULOS RELACIONADOS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821751
+    Group-Object
+    Measure-Object
+    New-Object
+    Select-Object
+    Sort-Object
+    Tee-Object
+
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Compare-Object -examples".
+    Para obtener más información, escriba: "get-help Compare-Object -detailed".
+    Para obtener información técnica, escriba: "get-help Compare-Object -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Compare-Object -online"
+
+
+PS C:\WINDOWS\system32> Get-Help Compare-Object -Examples
+
+NOMBRE
+    Compare-Object
+
+SINOPSIS
+    Compares two sets of objects.
+
+
+    Example 1: Compare the content of two text files
+
+    PS C:\>Compare-Object -ReferenceObject $(Get-Content C:\test\testfile1.txt) -DifferenceObject $(Get-Content
+    C:\test\testfile2.txt)
+
+    This command compares the contents of two text files. It displays only the lines that appear in one file or in
+    the other file, not lines that appear in both files.
+    Example 2: Compare each line of content in two text files
+
+    PS C:\>Compare-Object -ReferenceObject $(Get-Content C:\Test\testfile1.txt) -DifferenceObject $(Get-Content
+    C:\Test\testfile2.txt) -IncludeEqual
+
+    This command compares each line of content in two text files. It displays all lines of content from both files,
+    indicating whether each line appears in only Textfile1.txt or Textfile2.txt or whether each line appears in both
+    files.
+    Example 3: Compare two sets of process objects
+
+    PS C:\>$Processes_Before = Get-Process
+    PS C:\> notepad
+    PS C:\> $Processes_After = Get-Process
+    PS C:\> Compare-Object -ReferenceObject $Processes_Before -DifferenceObject $Processes_After
+
+    These commands compare two sets of process objects.
+
+    The first command uses the Get-Process cmdlet to get the processes on the computer. It stores them in the
+    $processes_before variable.
+
+    The second command starts Notepad.
+
+    The third command uses the Get-Process cmdlet again and stores the resulting processes in the $processes_after
+    variable.
+
+    The fourth command uses the Compare-Object cmdlet to compare the two sets of process objects. It displaysthe
+    differences between them, which include the new instance of Notepad.
+
+
+
+PS C:\WINDOWS\system32> diff -ReferenceObject $(get-content archivo1.txt) -DifferenceObject $(Get-Content archivo2.txt)
+
+InputObject SideIndicator
+----------- -------------
+ file       =>
+ dos        =>
+ archivo    <=
+ uno        <=
+
+
+PS C:\WINDOWS\system32> Get-Service | Export-Csv servicios.csv | Out-File
+>> ErrorTerminación(Out-File): "No se puede procesar el argumento porque el valor del argumento "path" es NULL. Cambie el valor del argumento "path" a un valor no nulo."
+Out-File : No se puede procesar el argumento porque el valor del argumento "path" es NULL. Cambie el valor del 
+argumento "path" a un valor no nulo.
+En línea: 1 Carácter: 42
++ Get-Service | Export-Csv servicios.csv | Out-File
++                                          ~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Out-File], PSArgumentNullException
+    + FullyQualifiedErrorId : ArgumentNull,Microsoft.PowerShell.Commands.OutFileCommand
+Out-File : No se puede procesar el argumento porque el valor del argumento "path" es NULL. Cambie el valor del
+argumento "path" a un valor no nulo.
+En línea: 1 Carácter: 42
++ Get-Service | Export-Csv servicios.csv | Out-File
++                                          ~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Out-File], PSArgumentNullException
+    + FullyQualifiedErrorId : ArgumentNull,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Get-Help Out-File -Detailed
+
+NOMBRE
+    Out-File
+
+SINOPSIS
+    Sends output to a file.
+
+
+SINTAXIS
+    Out-File [-FilePath] <String> [[-Encoding] {unknown | string | unicode | bigendianunicode | utf8 | utf7 | utf32
+    | ascii | default | oem}] [-Append] [-Confirm] [-Force] [-InputObject <PSObject>] [-NoClobber] [-NoNewline]
+    [-WhatIf] [-Width <Int32>] [<CommonParameters>]
+
+    Out-File [[-Encoding] {unknown | string | unicode | bigendianunicode | utf8 | utf7 | utf32 | ascii | default |
+    oem}] [-Append] [-Confirm] [-Force] [-InputObject <PSObject>] -LiteralPath <String> [-NoClobber] [-NoNewline]
+    [-WhatIf] [-Width <Int32>] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Out-File cmdlet sends output to a file. You can use this cmdlet instead of the redirection operator (>) when
+    you need to use its parameters.
+
+
+PARÁMETROS
+    -Append [<SwitchParameter>]
+        Indicates that the cmdlet adds the output to the end of an existing file, instead of replacing the file
+        contents.
+
+    -Confirm [<SwitchParameter>]
+        Prompts you for confirmation before running the cmdlet.
+
+    -Encoding <String>
+        Specifies the type of character encoding used in the file. The acceptable values for this parameter are:
+
+        - Unknown
+
+        - String
+
+        - Unicode
+
+        - BigEndianUnicode
+
+        - UTF8
+
+        - UTF7
+
+        - UTF32
+
+        - ASCII
+
+        - Default
+
+        - OEM
+
+
+        Unicode is the default.
+
+        Default uses the encoding of the system's current ANSI code page.
+        OEM uses the current original equipment manufacturer code page identifier for the operating system.
+
+
+    -FilePath <String>
+        Specifies the path to the output file.
+
+    -Force [<SwitchParameter>]
+        Indicates that the cmdlet overwrites an existing read-only file. Even using the Force parameter, the cmdlet
+        cannot override security restrictions.
+
+    -InputObject <PSObject>
+        Specifies the objects to be written to the file. Enter a variable that contains the objects or type a
+        command or expression that gets the objects.
+
+    -LiteralPath <String>
+        Specifies the path to the output file. Unlike FilePath , the value of the LiteralPath parameter is used
+        exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape characters,
+        enclose it in single quotation marks. Single quotation marks tell Windows PowerShell not to interpret any
+        characters as escape sequences.
+
+    -NoClobber [<SwitchParameter>]
+        Indicates that the cmdlet will not overwrite an existing file. By default, if a file exists in the specified
+        path, Out-File overwrites the file without warning. If both Append and NoClobber are used, the output is
+        appended to the existing file.
+
+    -NoNewline [<SwitchParameter>]
+        @{Text=}
+
+    -WhatIf [<SwitchParameter>]
+        Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+    -Width <Int32>
+        Specifies the number of characters in each line of output. Any additional characters are truncated, not
+        wrapped. If you omit this parameter, the width is determined by the characteristics of the host. The default
+        for the Windows PowerShell console is 80 characters.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Send output to a file
+
+    PS C:\>Get-Process | Out-File -filepath C:\Test1\process.txt
+
+    This command sends a list of processes on the computer to the Process.txt file. If the file does not exist,
+    Out-File creates it. Because the name of the FilePath parameter is optional, you can omit it and submit the
+    equivalent command `Get-Process | Outfile C:\Test1\process.txt`.
+    Example 2: Send output to a file without overwriting
+
+    PS C:\>Get-Process | Out-File C:\Test1\process.txt -NoClobber
+
+    Out-File : File C:\Test1\process.txt already exists and NoClobber was specified.
+    At line:1 char:23
+    + Get-Process | Out-File  <<<< process.txt -NoClobber
+
+    This command sends a list of processes to the Process.txt file, but it uses the NoClobber parameter, which
+    prevents an existing file from being overwritten. The output shows the error message that appears when NoClobber
+    is used with an existing file.
+    Example 3: Send output to a file in ASCII format
+
+    PS C:\>$A = Get-Process
+    PS C:\>Out-File -FilePath C:\Test1\process.txt -InputObject $A -Encoding ASCII -Width 50
+
+    These commands send a list of processes on the computer to the Process.txt file. The text is encoded in ASCII
+    format so that it can be read by search programs like Findstr and Grep. By default, Out-File uses Unicode format.
+
+    The first command gets the list of processes and stores them in the $A variable. The second command uses the
+    Out-File cmdlet to send the list to the Process.txt file.
+
+    The command uses the InputObject parameter to specify that the input is in the $A variable. It uses the Encoding
+    parameter to convert the output to ASCII format. It uses the Width parameter to limit each line in the file to
+    50 characters. Because the lines of output are truncated at 50 characters, the rightmost column in the process
+    table is omitted.
+    Example 4: Send output from outside a file system drive
+
+    PS C:\>Set-Location hklm:\software
+    PS C:\>Get-Acl mycompany\mykey | Out-File -FilePath c:\ps\acl.txt
+    PS C:\>Get-Acl mycompany\mykey | Out-File -FilePath filesystem::acl.txt
+
+    These commands show how to use the Out-File cmdlet when you are not in a FileSystem drive.
+
+    The first command sets the current location to the HKLM:\Software registry key.
+
+    The second and third commands have the same effect. They use the Get-Acl cmdlet to get the security descriptor
+    of the MyKey registry subkey (HKLM\Software\MyCompany\MyKey). A pipeline operator passes the result to the
+    Out-File cmdlet, which sends it to the Acl.txt file.
+
+    Because Out-File is not supported by the Windows PowerShell Registry provider, you must specify either the file
+    system drive name, such as c:, or the name of the provider followed by two colons, FileSystem::, in the value of
+    the FilePath parameter. The second and third commands demonstrate these methods.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Out-File -examples".
+    Para obtener más información, escriba: "get-help Out-File -detailed".
+    Para obtener información técnica, escriba: "get-help Out-File -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Out-File -online"
+
+
+PS C:\WINDOWS\system32> Get-Help Export-Csv -Detailed
+
+NOMBRE
+    Export-Csv
+
+SINOPSIS
+    Converts objects into a series of comma-separated (CSV) strings and saves the strings in a CSV file.
+
+
+SINTAXIS
+    Export-Csv [[-Path] <String>] [[-Delimiter] <Char>] [-Append] [-Confirm] [-Encoding {Unicode | UTF7 | UTF8 |
+    ASCII | UTF32 | BigEndianUnicode | Default | OEM}] [-Force] -InputObject <PSObject> [-LiteralPath <String>]
+    [-NoClobber] [-NoTypeInformation] [-WhatIf] [<CommonParameters>]
+
+    Export-Csv [[-Path] <String>] [-Append] [-Confirm] [-Encoding {Unicode | UTF7 | UTF8 | ASCII | UTF32 |
+    BigEndianUnicode | Default | OEM}] [-Force] -InputObject <PSObject> [-LiteralPath <String>] [-NoClobber]
+    [-NoTypeInformation] [-UseCulture] [-WhatIf] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Export-CSV cmdlet creates a CSV file of the objects that you submit. Each object is represented as a line or
+    row of the CSV. The row consists of a comma-separated list of the values of object properties. You can use this
+    cmdlet to create spreadsheets and share data with programs that take CSV files as input.
+
+    Do not format objects before sending them to the Export-CSV cmdlet. If you do, the format properties are
+    represented in the CSV file, instead of the properties of the original objects. To export only selected
+    properties of an object, use the Select-Object cmdlet.
+
+
+PARÁMETROS
+    -Append [<SwitchParameter>]
+        Indicates that this cmdlet adds the CSV output to the end of the specified file. Without this parameter,
+        Export-CSV replaces the file contents without warning.
+
+        This parameter was introduced in Windows PowerShell 3.0.
+
+    -Confirm [<SwitchParameter>]
+        Prompts you for confirmation before running the cmdlet.
+
+    -Delimiter <Char>
+        Specifies a delimiter to separate the property values. The default is a comma (,). Enter a character, such
+        as a colon (:). To specify a semicolon (;), enclose it in quotation marks.
+
+    -Encoding <String>
+        Specifies the encoding for the exported CSV file. The acceptable values for this parameter are:
+
+        - Unicode
+
+        - UTF7
+
+        - UTF8
+
+        - ASCII
+
+        - UTF32
+
+        - BigEndianUnicode
+
+        - Default
+
+        - OEM
+
+
+        The default value is ASCII.
+
+
+    -Force [<SwitchParameter>]
+        Forces the command to run without asking for user confirmation.
+
+    -InputObject <PSObject>
+        Specifies the objects to export as CSV strings. Enter a variable that contains the objects or type a command
+        or expression that gets the objects. You can also pipe objects to Export-CSV .
+
+    -LiteralPath <String>
+        Specifies the path to the CSV output file. Unlike Path , the value of the LiteralPath parameter is used
+        exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape characters,
+        enclose it in single quotation marks. Single quotation marks tell Windows PowerShell not to interpret any
+        characters as escape sequences.
+
+    -NoClobber [<SwitchParameter>]
+        Indicates that this cmdlet does not overwrite of an existing file. By default, if a file exists in the
+        specified path, Export-CSV overwrites the file without warning.
+
+    -NoTypeInformation [<SwitchParameter>]
+        Indicates that this cmdlet omits the type information from the CSV file. By default, the first line of the
+        CSV file contains #TYPE followed by the fully-qualified name of the type of the object.
+
+    -Path <String>
+        Specifies the path to the CSV output file. This parameter is required.
+
+    -UseCulture [<SwitchParameter>]
+        Indicates that this cmdlet uses the list separator for the current culture as the item delimiter. The
+        default is a comma (,).
+
+        This parameter is very useful in scripts that are being distributed to users worldwide. To find the list
+        separator for a culture, use the following command: `(Get-Culture).TextInfo.ListSeparator`.
+
+    -WhatIf [<SwitchParameter>]
+        Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Export process properties
+
+    PS C:\>Get-Process wmiprvse | Select-Object basePriority,ID,SessionID,WorkingSet | Export-Csv -Path "data.csv"
+
+    This command selects a few properties of the WmiPrvse process and exports them to a CSV file named Data.csv.
+    Example 2: Export processes to a comma-delimited file
+
+    PS C:\>Get-Process | Export-Csv -Path "processes.csv"
+    # In processes.csv
+    #TYPE System.Diagnostics.Process
+    __NounName,Name,Handles,VM,WS,PM,NPM,Path,Company,CPU,FileVersion,...
+    Process,powershell,626,201666560,76058624,61943808,11960,C:\WINDOWS...
+    Process,powershell,257,151920640,38322176,37052416,7836,C:\WINDOWS\...
+
+    This command exports objects representing the processes on the computer to the Processes.csv file in the current
+    directory. Because it does not specify a delimiter, a comma (,) is used to separate the fields in the file.
+    Example 3: Export processes to a semicolon-delimited file
+
+    PS C:\>Get-Process | Export-Csv -Path "processes.csv" -Delimiter ";"
+    # In processes.csv
+    #TYPE System.Diagnostics.Process
+    __NounName;Name;Handles;VM;WS;PM;NPM;Path;Company;CPU;FileVersion;...
+    Process;powershell;626;201666560;76058624;61943808;11960;C:\WINDOWS...
+    Process;powershell;257;151920640;38322176;37052416;7836;C:\WINDOWS\...
+
+    This command exports objects representing the processes on the computer to the Processes.csv file in the current
+    directory. It uses the Delimiter parameter to specify the semicolon (;). As a result, the fields in the file are
+    separated by semicolons.
+    Example 4: Export using the list separator of the current culture
+
+    PS C:\>Get-Process | Export-Csv -Path "processes.csv" -UseCulture
+
+    This command exports objects representing the processes on the computer to the Processes.csv file in the current
+    directory. It uses the UseCulture parameter to direct Export-CSV to use the delimiter specified by the
+    ListSeparator property of the current culture.
+    Example 5: Export processes without type information
+
+    PS C:\>Get-Process | Export-Csv -Path "processes.csv" -NoTypeInformation
+    # In processes.csv
+    __NounName,Name,Handles,VM,WS,PM,NPM,Path,Company,CPU,FileVersion,...
+    Process,powershell,626,201666560,76058624,61943808,11960,C:\WINDOWS...
+    Process,powershell,257,151920640,38322176,37052416,7836,C:\WINDOWS\...
+
+    This command exports objects representing the processes on the computer to the Processes.csv file in the current
+    directory. It uses the NoTypeInformation parameter to suppress the type information in the file.
+    Example 6: Export and append script properties
+
+    PS C:\>$ScriptFiles = Get-ChildItem D:\* -Include *.ps1 -Recurse | Where-Object {$_.creationtime -gt
+    "01/01/2011"}
+
+    The second command uses the Select-Object cmdlet to select the relevant properties of the script files. It saves
+    the revised results in the ScriptFiles variable.
+    PS C:\>$ScriptFiles = $ScriptFiles | Select-Object -Property Name, CreationTime, LastWriteTime, IsReadOnly
+
+    The third command uses a pipeline operator (|) to send the script file information in the ScriptFiles variable
+    to the **Export-CSV** cmdlet. The command uses the Path parameter to specify the output file and the *Append*
+    parameter to add the new script data to the end of the output file, instead of replacing the existing file
+    contents.
+    PS C:\>$ScriptFiles | Export-Csv -Append -Path "\\Archive01\Scripts\Scripts.csv"
+
+    These commands add information about new Windows PowerShell scripts to a script inventory file.
+
+    The first command uses the Get-ChildItem cmdlet to do a recursive search in the D: drive for files with the .ps1
+    file name extension. It uses a pipeline operator to sends the results to the Where-Object cmdlet, which gets
+    only files that were created after January 1, 2011, and then saves them in the $ScriptFiles variable.
+    Example 7: Select properties to export
+
+    The first command shows how to select properties of an object and export them to a CSV file. This command uses
+    the Get-Date cmdlet to get the current date and time. It uses the **Select-Object** cmdlet to select the desired
+    properties, and the **Export-CSV** cmdlet to export the object and its properties to the Date.csv file. The
+    output shows the expected content in the Date.csv file.
+    PS C:\>Get-Date | Select-Object -Property DateTime, Day, DayOfWeek, DayOfYear | Export-Csv -Path Date.csv
+    #In Date.csv:"DateTime","Day","DayOfWeek","DayOfYear""Tuesday, October 05, 2010 2:45:13 PM","5","Tuesday","278"
+
+    The second command shows that when you use the **Format-Table** cmdlet to format your data before exporting it,
+    the output is not useful.
+    PS C:\>Get-Date | Format-Table -Property DateTime, Day, DayOfWeek, DayOfYear | Export-Csv -Path Date.csv
+    #In Date.csv: "ClassId2e4f51ef21dd47e99d3c952918aff9cd","pageHeaderEntry","pageFooterEntry","autosizeInfo","shape
+    Info","groupingEntry"
+    "033ecb2bc07a4d43b5ef94ed5a35d280",,,,"Microsoft.PowerShell.Commands.Internal.Format.TableHeaderInfo","9e210fe47d
+    09416682b841769c78b8a3"
+    ,,,,,"27c87ef9bbda4f709f6b4002fa4af63c",,,,,"4ec4f0187cb04f4cb6973460dfe252df",,,,,"cf522b78d86c486691226b40aa69e
+    95c",,,,,
+
+    This example demonstrates one of most common problems that users encounter when using the Export-CSV cmdlet. It
+    explains how to recognize and avoid this error.
+
+    Because a CSV file has a table format, it might seem natural to use the Format-Table cmdlet to format the data
+    in a table to prepare it for export as a CSV file. Also, the Format-Table cmdlet allows you to select object
+    properties easily.
+
+    However, when you format the data in a table and then export it, you are exporting a table object, not your
+    original data object. The resulting CSV file is not useful.
+
+    This example shows how to select object properties by using the Select-Object cmdlet, and it shows the
+    Export-CSV formats the data correctly in a CSV file without any preparatory formatting by another cmdlet.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Export-Csv -examples".
+    Para obtener más información, escriba: "get-help Export-Csv -detailed".
+    Para obtener información técnica, escriba: "get-help Export-Csv -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Export-Csv -online"
+
+
+PS C:\WINDOWS\system32> Get-Help Export-Clixml -Detailed
+
+NOMBRE
+    Export-Clixml
+
+SINOPSIS
+    Creates an XML-based representation of an object or objects and stores it in a file.
+
+
+SINTAXIS
+    Export-Clixml [-Confirm] [-Depth <Int32>] [-Encoding {Unicode | UTF7 | UTF8 | ASCII | UTF32 | BigEndianUnicode |
+    Default | OEM}] [-Force] -InputObject <PSObject> -LiteralPath <String> [-NoClobber] [-WhatIf]
+    [<CommonParameters>]
+
+    Export-Clixml [-Path] <String> [-Confirm] [-Depth <Int32>] [-Encoding {Unicode | UTF7 | UTF8 | ASCII | UTF32 |
+    BigEndianUnicode | Default | OEM}] [-Force] -InputObject <PSObject> [-NoClobber] [-WhatIf] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Export-CliXml cmdlet creates an XML-based representation of an object or objects and stores it in a file.
+    You can then use the Import-Clixml cmdlet to re-create the saved object based on the contents of that file.
+
+    This cmdlet is similar to ConvertTo-Xml, except that Export-CliXml stores the resulting XML in a file.
+    ConvertTo-XML returns the XML, so you can continue to process it in Windows PowerShell.
+
+    A valuable use of Export-CliXml is to export credentials and secure strings securely as XML. For an example of
+    how to do this, see Example 3.
+
+
+PARÁMETROS
+    -Confirm [<SwitchParameter>]
+        Prompts you for confirmation before running the cmdlet.
+
+    -Depth <Int32>
+        Specifies how many levels of contained objects are included in the XML representation. The default value is
+        2.
+
+        The default value can be overridden for the object type in the Types.ps1xml files. For more information, see
+        about_Types.ps1xml.
+
+    -Encoding <String>
+        Specifies the type of encoding for the target file. The acceptable values for this parameter are:
+
+        - ASCII
+
+        - UTF8
+
+        - UTF7
+
+        - UTF32
+
+        - Unicode
+
+        - BigEndianUnicode
+
+        - Default
+
+        - OEM
+
+
+        The default value is Unicode.
+
+
+    -Force [<SwitchParameter>]
+        Forces the command to run without asking for user confirmation.
+
+        Causes the cmdlet to clear the read-only attribute of the output file if necessary.  The cmdlet will attempt
+        to reset the read-only attribute when the command completes.
+
+    -InputObject <PSObject>
+        Specifies the object to be converted. Enter a variable that contains the objects, or type a command or
+        expression that gets the objects. You can also pipe objects to Export-Clixml .
+
+    -LiteralPath <String>
+        Specifies the path to the file where the XML representation of the object will be stored. Unlike Path , the
+        value of the LiteralPath parameter is used exactly as it is typed. No characters are interpreted as
+        wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation
+        marks tell Windows PowerShell not to interpret any characters as escape sequences.
+
+    -NoClobber [<SwitchParameter>]
+        Indicates that that the cmdlet does not overwrite the contents of an existing file. By default, if a file
+        exists in the specified path, Export-Clixml overwrites the file without warning.
+
+    -Path <String>
+        Specifies the path to the file where the XML representation of the object will be stored.
+
+    -WhatIf [<SwitchParameter>]
+        Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Export a string to an XML file
+
+    PS C:\>"This is a test" | Export-Clixml sample.xml
+
+    This command creates an XML file that stores a representation of the string, "This is a test".
+    Example 2: Export an object to an XML file
+
+    PS C:\>Get-Acl C:\test.txt | Export-Clixml -Path "fileacl.xml"
+    PS C:\> $Fileacl = Import-Clixml "fileacl.xml"
+
+    This example shows how to export an object to an XML file and then create an object by importing the XML from
+    the file.
+
+    The first command uses the Get-Acl cmdlet to get the security descriptor of the Test.txt file. It uses a
+    pipeline operator to pass the security descriptor to Export-Clixml , which stores an XML-based representation of
+    the object in a file named FileACL.xml.
+
+    The second command uses the Import-Clixml cmdlet to create an object from the XML in the FileACL.xml file. Then,
+    it saves the object in the $FileAcl variable.
+    Example 3: Encrypt an exported credential object
+
+    PS C:\>$CredXmlPath = Join-Path (Split-Path $Profile) TestScript.ps1.credential
+    PS C:\>$credential | Export-CliXml $CredPath
+    PS C:\>$CredXmlPath = Join-Path (Split-Path $Profile) TestScript.ps1.credential
+    PS C:\>$Credential = Import-CliXml $CredXmlPath
+
+    The Export-CliXml cmdlet encrypts credential objects by using the Windows Data Protection
+    APIhttp://msdn.microsoft.com/library/windows/apps/xaml/hh464970.aspx. This ensures that only your user account
+    can decrypt the contents of the credential object.
+
+    In this example, given a credential that you've stored in the $Credential variable by running the Get-Credential
+    cmdlet, you can run the Export-CliXml cmdlet to save the credential to disk.In the example, the file in which
+    the credential is stored is represented by TestScript.ps1.credential. Replace TestScript with the name of the
+    script with which you are loading the credential.
+
+    In the second command, pipe the credential object to Export-CliXml , and save it to the path, $CredXmlPath, that
+    you specified in the first command.
+
+    To import the credential automatically into your script, run the final two commands. This time, you are running
+    Import-Clixml to import the secured credential object into your script. This eliminates the risk of exposing
+    plain-text passwords in your script.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Export-Clixml -examples".
+    Para obtener más información, escriba: "get-help Export-Clixml -detailed".
+    Para obtener información técnica, escriba: "get-help Export-Clixml -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Export-Clixml -online"
+
+
+PS C:\WINDOWS\system32> (Get-Culture).TextInfo.ListSeparator
+;
+PS C:\WINDOWS\system32> help *random*
+
+NOMBRE
+    Get-Random
+
+SINOPSIS
+    Gets a random number, or selects objects randomly from a collection.
+
+
+SINTAXIS
+    Get-Random [-InputObject] <Object[]> [-Count <Int32>] [-SetSeed <Int32>] [<CommonParameters>]
+
+    Get-Random [[-Maximum] <Object>] [-Minimum <Object>] [-SetSeed <Int32>] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Get-Random cmdlet gets a randomly selected number. If you submit a collection of objects to Get-Random , it
+    gets one or more randomly selected objects from the collection.
+
+    Without parameters or input, a Get-Random command returns a randomly selected 32-bit unsigned integer between 0
+    (zero) and Int32.MaxValue (0x7FFFFFFF, 2,147,483,647).
+
+    You can use the parameters of Get-Random to specify a seed number, minimum and maximum values, and the number of
+    objects returned from a submitted collection.
+
+
+VÍNCULOS RELACIONADOS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821799
+
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Get-Random -examples".
+    Para obtener más información, escriba: "get-help Get-Random -detailed".
+    Para obtener información técnica, escriba: "get-help Get-Random -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Get-Random -online"
+
+
+PS C:\WINDOWS\system32> Get-Random
+1916310596
+PS C:\WINDOWS\system32> help *date*
+
+Name                              Category  Module                    Synopsis
+----                              --------  ------                    --------
+Update-Help                       Cmdlet    Microsoft.PowerShell.Core Downloads and installs the newest help files...
+Get-Date                          Cmdlet    Microsoft.PowerShell.U... Gets the current date and time.
+Set-Date                          Cmdlet    Microsoft.PowerShell.U... Changes the system time on the computer to a...
+Update-FormatData                 Cmdlet    Microsoft.PowerShell.U... Updates the formatting data in the current s...
+Update-List                       Cmdlet    Microsoft.PowerShell.U... Adds items to and removes items from a prope...
+Update-TypeData                   Cmdlet    Microsoft.PowerShell.U... Updates the extended type data in the session.
+Update-Script                     Function  PowerShellGet             ...
+Update-ModuleManifest             Function  PowerShellGet             ...
+Update-Module                     Function  PowerShellGet             ...
+Update-ScriptFileInfo             Function  PowerShellGet             ...
+Update-MpSignature                Function  ConfigDefender            ...
+Update-WIMBootEntry               Cmdlet    Dism                      Update-WIMBootEntry...
+Update-AutologgerConfig           Function  EventTracingManagement    ...
+Update-EtwTraceSession            Function  EventTracingManagement    ...
+Update-IscsiTarget                Function  iSCSI                     ...
+Update-IscsiTargetPortal          Function  iSCSI                     ...
+Update-NetIPsecRule               Function  NetSecurity               ...
+Update-DscConfiguration           Function  PSDesiredStateConfigur... ...
+Update-SmbMultichannelConnection  Function  SmbShare                  ...
+Update-Disk                       Function  Storage                   ...
+Update-StorageFirmware            Function  Storage                   ...
+Update-StoragePool                Function  Storage                   ...
+Update-StorageProviderCache       Function  Storage                   ...
+Update-HostStorageCache           Function  Storage                   ...
+Get-WindowsUpdateLog              Function  WindowsUpdate             ...
+Install-WUUpdates                 Function  WindowsUpdateProvider     ...
+Get-WULastScanSuccessDate         Function  WindowsUpdateProvider     ...
+Get-WULastInstallationDate        Function  WindowsUpdateProvider     ...
+
+
+PS C:\WINDOWS\system32> Get-Date
+
+viernes, 28 de febrero de 2020 12:15:29 a. m.
+
+
+PS C:\WINDOWS\system32> (Get-Date).GetType()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     DateTime                                 System.ValueType
+
+
+PS C:\WINDOWS\system32> Get-Date | Select-Object DayOfWeek
+
+DayOfWeek
+---------
+   Friday
+
+
+PS C:\WINDOWS\system32> help *hotfix*
+
+NOMBRE
+    Get-HotFix
+
+SINOPSIS
+    Gets the hotfixes that have been applied to the local and remote computers.
+
+
+SINTAXIS
+    Get-HotFix [-ComputerName <String[]>] [-Credential <PSCredential>] [-Description <String[]>] [<CommonParameters>]
+
+    Get-HotFix [[-Id] <String[]>] [-ComputerName <String[]>] [-Credential <PSCredential>] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Get-Hotfix cmdlet gets hotfixes (also called updates) that have been installed on either the local computer
+    (or on specified remote computers) by Windows Update, Microsoft Update, or Windows Server Update Services; the
+    cmdlet also gets hotfixes or updates that have been installed manually by users.
+
+
+VÍNCULOS RELACIONADOS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821586
+    Win32_QuickFixEngineering http://go.microsoft.com/fwlink/?LinkID=145071
+    Get-ComputerRestorePoint
+    Add-Content
+
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Get-HotFix -examples".
+    Para obtener más información, escriba: "get-help Get-HotFix -detailed".
+    Para obtener información técnica, escriba: "get-help Get-HotFix -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Get-HotFix -online"
+
+
+PS C:\WINDOWS\system32> help *sort*
+
+Name                              Category  Module                    Synopsis
+----                              --------  ------                    --------
+sort                              Alias                               Sort-Object
+Sort-Object                       Cmdlet    Microsoft.PowerShell.U... Sorts objects by property values.
+
+
+PS C:\WINDOWS\system32> help Get-HotFix -Detailed
+
+NOMBRE
+    Get-HotFix
+
+SINOPSIS
+    Gets the hotfixes that have been applied to the local and remote computers.
+
+
+SINTAXIS
+    Get-HotFix [-ComputerName <String[]>] [-Credential <PSCredential>] [-Description <String[]>] [<CommonParameters>]
+
+    Get-HotFix [[-Id] <String[]>] [-ComputerName <String[]>] [-Credential <PSCredential>] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Get-Hotfix cmdlet gets hotfixes (also called updates) that have been installed on either the local computer
+    (or on specified remote computers) by Windows Update, Microsoft Update, or Windows Server Update Services; the
+    cmdlet also gets hotfixes or updates that have been installed manually by users.
+
+
+PARÁMETROS
+    -ComputerName <String[]>
+        Specifies a remote computer. The default is the local computer.
+
+        Type the NetBIOS name, an Internet Protocol (IP) address, or a fully qualified domain name (FQDN) of a
+        remote computer.
+
+        This parameter does not rely on Windows PowerShell remoting. You can use the ComputerName parameter of this
+        cmdlet even if your computer is not configured to run remote commands.
+
+    -Credential <PSCredential>
+        Specifies a user account that has permission to perform this action. The default is the current user.
+
+        Type a user name, such as User01 or Domain01\User01, or enter a PSCredential object, such as one generated
+        by the Get-Credential cmdlet. If you type a user name, you will be prompted for a password.
+
+    -Description <String[]>
+        Specifies the hotfix descriptions that this cmdlet gets. Wildcards are permitted. The default is all
+        hotfixes on the computer.
+
+    -Id <String[]>
+        Specifies the hotfix IDs that this cmdlet gets. The default is all hotfixes on the computer.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Get all hotfixes on the local computer
+
+    PS C:\>Get-HotFix
+
+    This command gets all hotfixes on the local computer.
+    Example 2: Get all hotfixes on multiple computers that start with a search string
+
+    PS C:\>Get-HotFix -Description "Security*" -ComputerName "Server01", "Server02" -Cred "Server01\admin01"
+
+    This command gets all hotfixes on the Server01 and Server02 computers that have a description that begins with
+    Security.
+    Example 3: Create a text file that contain the computer names that are missing a security update
+
+    PS C:\>$A = Get-Content "servers.txt"
+    PS C:\>$A | ForEach { if (!(Get-HotFix -Id "KB957095" -ComputerName $_)) { Add-Content $_ -Path
+    "Missing-kb953631.txt" }}
+
+    The commands in this example create a text file listing the names of computers that are missing a security
+    update.
+
+    The commands use the Get-Hotfix cmdlet to get the KB957095 security update on all of the computers whose names
+    are listed in the Servers.txt file.
+
+    If a computer does not have the update, the Add-Content cmdlet writes the computer name in the
+    Missing-KB953631.txt file.
+    Example 4: Get the most recent hotfix on the local computer
+
+    PS C:\>(Get-HotFix | sort installedon)[-1]
+
+    This command gets the most recent hotfix on the computer.
+
+    It gets the hotfixes, sorts them by the value of the InstalledOn property, and then it uses array notation to
+    select the last item in the array.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Get-HotFix -examples".
+    Para obtener más información, escriba: "get-help Get-HotFix -detailed".
+    Para obtener información técnica, escriba: "get-help Get-HotFix -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Get-HotFix -online"
+
+
+PS C:\WINDOWS\system32> help Get-HotFix -Examples
+
+NOMBRE
+    Get-HotFix
+
+SINOPSIS
+    Gets the hotfixes that have been applied to the local and remote computers.
+
+
+    Example 1: Get all hotfixes on the local computer
+
+    PS C:\>Get-HotFix
+
+    This command gets all hotfixes on the local computer.
+    Example 2: Get all hotfixes on multiple computers that start with a search string
+
+    PS C:\>Get-HotFix -Description "Security*" -ComputerName "Server01", "Server02" -Cred "Server01\admin01"
+
+    This command gets all hotfixes on the Server01 and Server02 computers that have a description that begins with
+    Security.
+    Example 3: Create a text file that contain the computer names that are missing a security update
+
+    PS C:\>$A = Get-Content "servers.txt"
+    PS C:\>$A | ForEach { if (!(Get-HotFix -Id "KB957095" -ComputerName $_)) { Add-Content $_ -Path
+    "Missing-kb953631.txt" }}
+
+    The commands in this example create a text file listing the names of computers that are missing a security
+    update.
+
+    The commands use the Get-Hotfix cmdlet to get the KB957095 security update on all of the computers whose names
+    are listed in the Servers.txt file.
+
+    If a computer does not have the update, the Add-Content cmdlet writes the computer name in the
+    Missing-KB953631.txt file.
+    Example 4: Get the most recent hotfix on the local computer
+
+    PS C:\>(Get-HotFix | sort installedon)[-1]
+
+    This command gets the most recent hotfix on the computer.
+
+    It gets the hotfixes, sorts them by the value of the InstalledOn property, and then it uses array notation to
+    select the last item in the array.
+
+
+
+PS C:\WINDOWS\system32> Get- HotFix | sort InstalledOn | Select-Object InstalledOn, InstalledBy, HotFixId
+Get- : El término 'Get-' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. 
+Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e 
+inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ Get- HotFix | sort InstalledOn | Select-Object InstalledOn, Installed ...
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+Get- : El término 'Get-' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable.
+Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta
+e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ Get- HotFix | sort InstalledOn | Select-Object InstalledOn, Installed ...
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\WINDOWS\system32> Get-HotFix | sort InstalledOn | Select-Object InstalledOn, InstalledBy, HotFixId
+
+InstalledOn               InstalledBy         HotFixId
+-----------               -----------         --------
+15/09/2019 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4508433
+15/09/2019 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4515383
+15/09/2019 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4501374
+16/09/2019 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4516115
+4/10/2019 12:00:00 a. m.  NT AUTHORITY\SYSTEM KB4520390
+9/10/2019 12:00:00 a. m.  NT AUTHORITY\SYSTEM KB4521863
+13/11/2019 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4524569
+17/01/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4528759
+13/02/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4534132
+13/02/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4537759
+13/02/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4538674
+13/02/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4532693
+14/02/2020 12:00:00 a. m. NT AUTHORITY\SYSTEM KB4524244
+
+
+PS C:\WINDOWS\system32> Get-HotFix | sort Description | Select-Object description , HotFixId,InstalledOn | ConvertTo-Html | Out-File -FilePath hotfixes.html
+PS C:\WINDOWS\system32> help *log*
+
+Name                              Category  Module                    Synopsis
+----                              --------  ------                    --------
+Clear-EventLog                    Cmdlet    Microsoft.PowerShell.M... Clears all entries from specified event logs...
+Get-EventLog                      Cmdlet    Microsoft.PowerShell.M... Gets the events in an event log, or a list o...
+Limit-EventLog                    Cmdlet    Microsoft.PowerShell.M... Sets the event log properties that limit the...
+New-EventLog                      Cmdlet    Microsoft.PowerShell.M... Creates a new event log and a new event sour...
+Remove-EventLog                   Cmdlet    Microsoft.PowerShell.M... Deletes an event log or unregisters an event...
+Show-EventLog                     Cmdlet    Microsoft.PowerShell.M... Displays the event logs of the local or a re...
+Write-EventLog                    Cmdlet    Microsoft.PowerShell.M... Writes an event to an event log.
+New-FileCatalog                   Cmdlet    Microsoft.PowerShell.S...
+Test-FileCatalog                  Cmdlet    Microsoft.PowerShell.S...
+Enable-AppBackgroundTaskDiagno... Cmdlet    AppBackgroundTask         Enable-AppBackgroundTaskDiagnosticLog...
+Disable-AppBackgroundTaskDiagn... Cmdlet    AppBackgroundTask         Disable-AppBackgroundTaskDiagnosticLog...
+Get-AppxLog                       Function  Appx                      ...
+Export-BinaryMiLog                Cmdlet    CimCmdlets                Export-BinaryMiLog...
+Import-BinaryMiLog                Cmdlet    CimCmdlets                Import-BinaryMiLog...
+Get-MpThreatCatalog               Function  ConfigDefender            ...
+Get-DeliveryOptimizationLog       Cmdlet    DeliveryOptimization      Get-DeliveryOptimizationLog...
+Start-AutologgerConfig            Function  EventTracingManagement    ...
+Remove-AutologgerConfig           Function  EventTracingManagement    ...
+Get-AutologgerConfig              Function  EventTracingManagement    ...
+Update-AutologgerConfig           Function  EventTracingManagement    ...
+New-AutologgerConfig              Function  EventTracingManagement    ...
+Set-DtcLog                        Function  MsDtc                     ...
+Get-DtcLog                        Function  MsDtc                     ...
+Reset-DtcLog                      Function  MsDtc                     ...
+Get-PcsvDeviceLog                 Function  PcsvDevice                ...
+Clear-PcsvDeviceLog               Function  PcsvDevice                ...
+Get-LogProperties                 Function  PSDiagnostics             ...
+Set-LogProperties                 Function  PSDiagnostics             ...
+Stop-StorageDiagnosticLog         Function  Storage                   ...
+Start-StorageDiagnosticLog        Function  Storage                   ...
+Get-WindowsUpdateLog              Function  WindowsUpdate             ...
+about_Eventlogs                   HelpFile                            Windows PowerShell creates a Windows event l...
+about_Logical_Operators           HelpFile                            Describes the operators that connect stateme...
+
+
+PS C:\WINDOWS\system32> help Get-EventLog -Detailed
+
+NOMBRE
+    Get-EventLog
+
+SINOPSIS
+    Gets the events in an event log, or a list of the event logs, on the local or remote computers.
+
+
+SINTAXIS
+    Get-EventLog [-LogName] <String> [[-InstanceId] <Int64[]>] [-After <DateTime>] [-AsBaseObject] [-Before
+    <DateTime>] [-ComputerName <String[]>] [-EntryType {Error | Information | FailureAudit | SuccessAudit |
+    Warning}] [-Index <Int32[]>] [-Message <String>] [-Newest <Int32>] [-Source <String[]>] [-UserName <String[]>]
+    [<CommonParameters>]
+
+    Get-EventLog [-AsString] [-ComputerName <String[]>] [-List] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Get-EventLog cmdlet gets events and event logs on the local and remote computers.
+
+    You can use the parameters of this cmdlet to search for events by using their property values. This cmdlet gets
+    only the events that match all of the specified property values.
+
+    The cmdlets that contain the EventLog noun work only on classic event logs. To get events from logs that use the
+    Windows Event Log technology in Windows Vista and later versions of Windows, use Get-WinEvent.
+
+
+PARÁMETROS
+    -After <DateTime>
+        Specifies the data and time that this cmdlet get events that occur after. Enter a DateTime object, such as
+        the one returned by the Get-Date cmdlet.
+
+    -AsBaseObject [<SwitchParameter>]
+        Indicates that this cmdlet returns a standard System.Diagnostics.EventLogEntry object for each event.
+        Without this parameter, this cmdlet returns an extended PSObject object with additional EventLogName ,
+        Source , and InstanceId properties.
+
+        To see the effect of this parameter, pipe the events to the Get-Member cmdlet and examine the TypeName value
+        in the result.
+
+    -AsString [<SwitchParameter>]
+        Indicates that this cmdlet returns the output as strings, instead of objects.
+
+    -Before <DateTime>
+        Specifies the data and time that this cmdlet get events that occur before. Enter a DateTime object, such as
+        the one returned by the Get-Date cmdlet.
+
+    -ComputerName <String[]>
+        Specifies a remote computer. The default is the local computer.
+
+        Type the NetBIOS name, an Internet Protocol (IP) address, or a fully qualified domain name (FQDN) of a
+        remote computer. To specify the local computer, type the computer name, a dot (.), or localhost.
+
+        This parameter does not rely on Windows PowerShell remoting. You can use the ComputerName parameter of
+        Get-EventLog even if your computer is not configured to run remote commands.
+
+    -EntryType <String[]>
+        Specifies, as a string array, the entry type of the events that this cmdlet gets.
+
+        The acceptable values for this parameter are:
+
+        - Error
+
+        - Information
+
+        - FailureAudit
+
+        - SuccessAudit
+
+        - Warning.
+
+        The default is all events.
+
+    -Index <Int32[]>
+        Specifies the index values that this cmdlet gets events from.
+
+    -InstanceId <Int64[]>
+        Specifies the instance IDs that this cmdlet gets events from.
+
+    -List [<SwitchParameter>]
+        Indicates that this cmdlet gets a list of event logs on the computer.
+
+    -LogName <String>
+        Specifies the event log. Enter the log name (the value of the Log property; not the LogDisplayName) of one
+        event log. Wildcard characters are not permitted. This parameter is required.
+
+    -Message <String>
+        Specifies a string in the event message that this cmdlet gets event information from. You can use this
+        property to search for messages that contain certain words or phrases. Wildcards are permitted.
+
+    -Newest <Int32>
+        Specifies the maximum number of events that this cmdlet gets. This cmdlet gets the specified number of
+        events, beginning with the newest event in the log.
+
+    -Source <String[]>
+        Specifies, as a string array, sources that were written to the log that this cmdlet gets. Wildcards are
+        permitted.
+
+    -UserName <String[]>
+        Specifies, as a string array, user names that are associated with events. Enter names or name patterns, such
+        as User01, User , or Domain01\User . Wildcards are permitted.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Get event logs on a computer
+
+    PS C:\>Get-EventLog -List
+
+    This command gets the event logs on the computer.
+    Example 2: Get the five most recent entries from a specific event log
+
+    PS C:\>Get-EventLog -Newest 5 -LogName "Application"
+
+    This command gets the five most recent entries from the Application event log.
+    Example 3: Find all sources that are represented in a specific number of entries in an event log
+
+    PS C:\>$Events = Get-Eventlog -LogName system -Newest 1000
+    PS C:\>$Events | Group-Object -Property source -noelement | Sort-Object -Property count -Descending
+
+
+
+
+
+
+
+
+
+
+
+    Count Name
+    ----- ----
+    75    Service Control Manager
+    12    Print
+    6     UmrdpService
+    2     DnsApi
+    2     DCOM
+    1     Dhcp
+    1     TermDD
+    1     volsnap
+
+    This example shows how to find all of the sources that are represented in the 1000 most recent entries in the
+    System event log.
+
+    The first command gets the 1,000 most recent entries from the System event log and stores them in the $Events
+    variable.
+
+    The second command uses a pipeline operator (|) to send the events in $Events to the Group-Object cmdlet, which
+    groups the entries by the value of the Source property. The command uses a second pipeline operator to send the
+    grouped events to the Sort-Object cmdlet, which sorts them in descending order, so the most frequently appearing
+    source is listed first.
+
+    Source is just one property of event log entries. To see all of the properties of an event log entry, pipe the
+    event log entries to the Get-Member cmdlet.
+    Example 4: Get error events from a specific event log
+
+    PS C:\>Get-EventLog -LogName System -EntryType Error
+
+    This command gets only error events from the System event log.
+    Example 5: Get events from a specific event log with an Instance ID and Source value
+
+    PS C:\>Get-EventLog -LogName System -InstanceID 3221235481 -Source "DCOM"
+
+    This command gets events from the System log that have an InstanceID of 3221235481 and a Source value of DCOM.
+    Example 6: Get event log events from multiple computers
+
+    PS C:\>Get-EventLog -LogName "Windows PowerShell" -ComputerName "localhost", "Server01", "Server02"
+
+    This command gets the events from the Windows PowerShell event log on three computers, Server01, Server02, and
+    the local computer, known as localhost.
+    Example 7: Get all events in an event log that have include a specific word in the message value
+
+    PS C:\>Get-EventLog -LogName "Windows PowerShell" -Message "*failed*"
+
+    This command gets all the events in the Windows PowerShell event log that have a message value that includes the
+    word failed.
+    Example 8: Display the property values of an event in a list
+
+    PS C:\>$A = Get-EventLog -Log System -Newest 1
+    PS C:\>$A | Format-List -Property *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    EventID            : 7036
+    MachineName        : Server01
+    Data               : {}
+    Index              : 10238
+    Category           : (0)
+    CategoryNumber     : 0
+    EntryType          : Information
+    Message            : The description for Event ID
+    Source             : Service Control Manager
+    ReplacementStrings : {WinHTTP Web Proxy Auto-Disco
+    InstanceId         : 1073748860
+    TimeGenerated      : 4/11/2008 9:56:05 PM
+    TimeWritten        : 4/11/2008 9:56:05 PM
+    UserName           :
+    Site               :
+    Container          :
+
+    This example shows how to display the property values of an event in a list.
+
+    The first command gets the newest event from the System event log and saves it in the $A variable.
+
+    The second command uses a pipeline operator (|) to send the event in $a to the Format-List command, which
+    displays all (*) of the event properties.
+    Example 9: Get events from an event log with using a source and event ID
+
+    PS C:\>Get-EventLog -Log "Application" -Source "Outlook" | where {$_.eventID -eq 34}
+
+    This command gets events in the Application event log where the source is Outlook and the event ID is 34. Even
+    though this cmdlet does not have an EventID parameter, you can use the Where-Object cmdlet to select events
+    based on the value of any event property.
+    Example 10: Get event in an event log that is grouped by a property
+
+    PS C:\>Get-EventLog -Log System -UserName "NT*" | Group-Object -Property "UserName" -noelement | Format-Table
+    Count, Name -Auto
+
+
+
+
+
+
+    Count Name
+    ----- ----
+    6031  NT AUTHORITY\SYSTEM
+    42    NT AUTHORITY\LOCAL SERVICE
+    4     NT AUTHORITY\NETWORK SERVICE
+
+    This command returns the events in the system log grouped by the value of their UserName property. This command
+    uses the UserName parameter to get only events in which the user name begins with NT*.
+    Example 11: Get all errors in an event log that occurred during a specific time frame
+
+    PS C:\>$May31 = Get-Date 5/31/08
+    PS C:\>$July1 = Get-Date 7/01/08
+    PS C:\>Get-EventLog -Log "Windows PowerShell" -EntryType Error -After $May31 -before $July1
+
+    This command gets all of the errors in the Windows PowerShell event log that occurred in June 2008.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Get-EventLog -examples".
+    Para obtener más información, escriba: "get-help Get-EventLog -detailed".
+    Para obtener información técnica, escriba: "get-help Get-EventLog -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Get-EventLog -online"
+
+
+PS C:\WINDOWS\system32> help sort -Detailed
+
+NOMBRE
+    Sort-Object
+
+SINOPSIS
+    Sorts objects by property values.
+
+
+SINTAXIS
+    Sort-Object [[-Property] <Object[]>] [-CaseSensitive] [-Culture <String>] [-Descending] [-InputObject
+    <PSObject>] [-Unique] [<CommonParameters>]
+
+
+DESCRIPCIÓN
+    The Sort-Object cmdlet sorts objects in ascending or descending order based on the values of properties of the
+    object.
+
+    You can specify a single property or multiple properties, for a multi-key sort, and you can select a
+    case-sensitive or case-insensitive sort. You can also direct Sort-Object to display only the objects with a
+    unique value for a particular property.
+
+
+PARÁMETROS
+    -CaseSensitive [<SwitchParameter>]
+        Indicates that the sort should be case sensitive. By default, sorting is not case sensitive.
+
+    -Culture <String>
+        Specifies the cultural configuration to use when sorting.
+
+    -Descending [<SwitchParameter>]
+        Indicates that the cmdlet sorts the objects in descending order. The default is ascending order.
+
+        The Descending parameter applies to all properties. To sort by some properties in ascending order and others
+        in descending order, you must specify their property values by using a hash table.
+
+    -InputObject <PSObject>
+        Specifies the objects to sort.
+
+        When you use the InputObject parameter to submit a collection of items, Sort-Object receives one object that
+        represents the collection. Because one object cannot be sorted, Sort-Object returns the entire collection
+        unchanged.
+
+        To sort objects, pipe them to Sort-Object .
+
+    -Property <Object[]>
+        Specifies the properties to use when sorting. Objects are sorted based on the values of these properties.
+        Enter the names of the properties. Wildcards are permitted.
+
+        If you specify multiple properties, the objects are first sorted by the first property. If more than one
+        object has the same value for the first property, those objects are sorted by the second property. This
+        process continues until there are no more specified properties or no groups of objects.
+
+        If you do not specify properties, the cmdlet sorts based on default properties for the object type.
+
+        The value of the Property parameter can be a calculated property. To create a calculated, property, use a
+        hash table. Valid keys are:
+
+        - Expression <string> or <script block>
+
+        - Ascending <Boolean>
+
+        - Descending <Boolean>
+
+    -Unique [<SwitchParameter>]
+        Indicates that the cmdlet eliminates duplicates and returns only the unique members of the collection. You
+        can use this parameter instead of using the Get-Unique cmdlet.
+
+        This parameter is case-insensitive. As a result, strings that differ only in character casing are considered
+        to be the same.
+
+    <CommonParameters>
+        Este cmdlet admite los parámetros comunes: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable y OutVariable. Para obtener más información, consulta
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    Example 1: Sort the current directory by name
+
+    PS C:\>Get-ChildItem | Sort-Object
+    Mode                LastWriteTime     Length Name
+    ----                -------------     ------ ----
+    -a---         9/13/2005   4:24 PM          0 0
+    -a---          9/6/2005   4:19 PM         12 a.csv
+    -a---         9/21/2005   3:49 PM        529 a.Ps
+    -a---         8/22/2005   4:14 PM         22 a.pl
+    -a---         9/27/2005  10:33 AM         24 a.txt
+    -a---         9/15/2005  10:31 AM        398 a.vbs
+    -a---         7/21/2005  12:39 PM      37066 a.xml
+    -a---         8/28/2005  11:30 PM       5412 a.xslt
+    -a---        10/25/2005   1:59 PM        125 AdamTravel.txt
+    -a---         7/21/2005   9:49 AM         59 add2Num.Ps
+    -a---         8/29/2005   5:42 PM       7111 add-content.xml
+    -a---         9/21/2005  12:46 PM       8771 aliens.Ps
+    -a---         8/10/2005   2:10 PM        798 array.xml
+    -a---          8/4/2004   5:00 AM        110 AUTORUN.INF
+    -a---          9/6/2005   4:20 PM        245 b.csv
+    ...
+
+    This command sorts the subdirectories and files in the current directory. Because no properties are specified,
+    the files and directories are sorted in ascending alphabetical order by their default sort property, Name.
+    Example 2: Sort the current directory by file length
+
+    PS C:\>Get-ChildItem | Sort-Object -Property length
+    Mode                LastWriteTime     Length Name
+    ----                -------------     ------ ----
+    -a---         12/3/2006   5:35 PM          2 pref.txt
+    -a---          9/6/2006   3:33 PM         15 count.txt
+    -a---         7/26/2006  10:01 AM         30 filenoext
+    -a---         8/18/2006   9:02 AM         52 temp.ps1
+    -a---         8/18/2006   9:02 AM         52 temp.msh
+    -a---          9/6/2006   3:33 PM         56 fivewords.txt
+    -a---         7/26/2006   9:28 AM         80 date.csv
+    -a---         7/29/2006   7:15 PM         84 test2.txt
+    -a---         7/29/2006   7:15 PM         84 test.ps1
+
+    This command displays the files in the current directory in ascending order by file length.
+    Example 3: Sort processes by memory use
+
+    PS C:\>Get-Process | Sort-Object -Property WS | Select-Object -Last 5
+    Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
+    -------  ------    -----      ----- -----   ------     -- -----------
+    1105      25    44236      18932   197    93.81      2032 iexplore
+    2526      66    37668      36836   221   393.27       868 svchost
+    974       19    22844      45928   371    88.39      3952 WINWORD
+    1371      22    42192      61872   323    75.75      1584 INFOPATH
+    2145      58    93088      70680   619   396.69      3908 OUTLOOK
+
+    This command displays the five processes on the computer with the greatest memory use based on the size of their
+    working sets.
+
+    The command uses the Get-Process cmdlet to get a list of processes. It uses a pipeline operator (|) to send the
+    results to the Sort-Object cmdlet, which sorts the objects in working-set order.
+
+    Another pipeline operator sends the results to the Select-Object, which displays only the last five items in the
+    list.
+    Example 4: Sort HistoryInfo objects by ID
+
+    PS C:\>Get-History | Sort-Object -Descending
+    Id CommandLine
+    -- -----------
+    51 get-history | sort -descending
+    50 get-history | sort -descending
+    49 get-history | sort -descending
+    48 get-history | sort -descending
+    47 get-history | sort -descending
+    46 get-history | sort -descending
+    45 get-history | sort -descending
+    44 cd $pshome
+    43 Get-ChildItem | Sort-Object
+    42 gci *.txt
+
+    This command sorts HistoryInfo objects using the Id property as the default key.
+    Example 5: Sort services by Status and DisplayName
+
+    PS C:\>Get-Service | Sort-Object -Property @{Expression = "Status"; Descending = $True}, @{Expression =
+    "DisplayName"; Descending = $False}
+    Status   Name               DisplayName
+    ------   ----               -----------
+    Running  ALG                Application Layer Gateway Service
+    Running  Ati HotKey Poller  Ati HotKey Poller
+    Running  wuauserv           Automatic Updates
+    Running  BITS               Background Intelligent Transfer Ser...
+    Running  Client for NFS     Client for NFS
+    ...
+    Stopped  clr_optimizatio... .NET Runtime Optimization Service v...
+    Stopped  Alerter            Alerter
+    Stopped  AppMgmt            Application Management
+    Stopped  aspnet_state       ASP.NET State Service
+    Stopped  ATI Smart          ATI Smart
+    Stopped  ClipSrv            ClipBook
+
+    This command displays the services on the computer in descending Status order and ascending DisplayName order.
+
+    The command uses the Get-Service cmdlet to get the services on the computer. It uses a pipeline operator (|) to
+    send services to the Sort-Object cmdlet.
+
+    To sort one property in ascending order and another property in descending order, the command uses a hash table
+    for the value of the Property parameter. The hash table uses an Expression key to specify the property name and
+    an Ascending or Descending key to specify the sort order.
+
+    The resulting display, which sorts the Status values in descending order, lists properties with a Status value
+    of Running before those with a Status value of Stopped. When sorted in ascending order, Stopped appears before
+    Running, because Status is an enumerated property in which the value of Stopped (1) is less than the value of
+    Running (4).
+    Example 6: Sort text files by time span
+
+    PS C:\>Get-ChildItem *.txt | Sort-Object -Property @{Expression={$_.LastWriteTime - $_.CreationTime}; Ascending
+    = $False} | Format-Table LastWriteTime, CreationTime
+    LastWriteTime                           CreationTime
+    -------------                           ------------
+    2/21/2006 10:22:20 AM                   10/3/2005 4:19:40 PM
+    2/27/2006 8:14:24 AM                    2/23/2006 10:41:08 PM
+    2/24/2006 1:26:19 PM                    2/23/2006 11:23:36 PM
+    1/5/2006 12:01:35 PM                    1/5/2006 11:35:30 AM
+    2/24/2006 9:25:40 AM                    2/24/2006 9:22:24 AM
+    2/24/2006 9:40:01 AM                    2/24/2006 9:39:41 AM
+    2/21/2006 10:21:30 AM                   2/21/2006 10:21:30 AM
+
+    This command sorts text files in descending order by the time span between CreationTime and LastWriteTime.
+    Example 7: Sort names in a text file
+
+    PS C:\>Get-Content servers.txt
+    localhost
+    test01
+    server01
+    server02
+    localhost
+    server01 PS C:\>Get-Content servers.txt | Sort-Object -Unique
+    localhost
+    server01
+    server02
+    test01
+
+    These commands sort the names of servers in a text file. The second command uses the Sort-Object cmdlet with the
+    Unique parameter to return a sorted list without duplicates.
+NOTAS
+    Para ver los ejemplos, escriba: "get-help Sort-Object -examples".
+    Para obtener más información, escriba: "get-help Sort-Object -detailed".
+    Para obtener información técnica, escriba: "get-help Sort-Object -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help Sort-Object -online"
+
+
+PS C:\WINDOWS\system32> Get-EventLog -LogName System -Newest 50 | sort -Property TimeGenerated,Index | select Index,TimeGenerated,Source | Out-File eventlogsis.txt
+PS C:\WINDOWS\system32> Get-EventLog -LogName System -Newest 50 | sort -Property TimeGenerated,Index | select Index,TimeGenerated,Source 
+
+Index TimeGenerated             Source
+----- -------------             ------
+14857 26/02/2020 10:37:06 p. m. Microsoft-Windows-Kernel-Power
+14858 26/02/2020 10:40:19 p. m. Microsoft-Windows-DNS-Client
+14859 26/02/2020 10:42:16 p. m. Microsoft-Windows-DNS-Client
+14860 26/02/2020 10:43:03 p. m. Microsoft-Windows-DNS-Client
+14861 27/02/2020 12:05:18 a. m. Microsoft-Windows-Kernel-Power
+14862 27/02/2020 12:05:20 a. m. Microsoft-Windows-Kernel-Power
+14863 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-General
+14864 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-Power
+14865 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-Power
+14866 27/02/2020 12:54:35 a. m. Microsoft-Windows-Power-Troubleshooter
+14867 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14868 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14869 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14870 27/02/2020 12:56:00 a. m. Microsoft-Windows-Kernel-General
+14871 27/02/2020 12:56:04 a. m. Microsoft-Windows-Kernel-General
+14872 27/02/2020 12:56:13 a. m. Microsoft-Windows-WindowsUpdateClient
+14873 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14874 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14875 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14876 27/02/2020 12:56:26 a. m. Microsoft-Windows-WindowsUpdateClient
+14877 27/02/2020 12:56:26 a. m. Microsoft-Windows-WindowsUpdateClient
+14878 27/02/2020 12:56:48 a. m. Microsoft-Windows-Kernel-General
+14879 27/02/2020 12:57:00 a. m. Microsoft-Windows-WindowsUpdateClient
+14880 27/02/2020 12:57:05 a. m. Microsoft-Windows-WindowsUpdateClient
+14881 27/02/2020 12:59:29 a. m. Microsoft-Windows-Kernel-General
+14882 27/02/2020 12:59:36 a. m. Microsoft-Windows-WindowsUpdateClient
+14883 27/02/2020 12:59:45 a. m. Microsoft-Windows-WindowsUpdateClient
+14884 27/02/2020 1:00:13 a. m.  Microsoft-Windows-Kernel-General
+14885 27/02/2020 1:00:21 a. m.  Microsoft-Windows-WindowsUpdateClient
+14886 27/02/2020 1:00:21 a. m.  Microsoft-Windows-WindowsUpdateClient
+14887 27/02/2020 1:01:56 a. m.  Microsoft-Windows-Kernel-Power
+14888 27/02/2020 1:01:57 a. m.  Microsoft-Windows-Kernel-Power
+14889 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-General
+14890 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-Power
+14891 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-Power
+14892 27/02/2020 9:17:33 a. m.  Microsoft-Windows-Kernel-Power
+14893 27/02/2020 9:17:37 a. m.  Microsoft-Windows-Power-Troubleshooter
+14894 27/02/2020 10:41:21 a. m. Microsoft-Windows-Kernel-Power
+14895 27/02/2020 10:41:23 a. m. Microsoft-Windows-Kernel-Power
+14896 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-General
+14897 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-Power
+14898 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-Power
+14899 27/02/2020 2:44:08 p. m.  Microsoft-Windows-Kernel-Power
+14900 27/02/2020 2:44:09 p. m.  EventLog
+14901 27/02/2020 2:44:11 p. m.  Microsoft-Windows-Power-Troubleshooter
+14902 27/02/2020 5:22:52 p. m.  Microsoft-Windows-WindowsUpdateClient
+14903 27/02/2020 5:22:58 p. m.  Microsoft-Windows-WindowsUpdateClient
+14904 27/02/2020 5:23:13 p. m.  Microsoft-Windows-WindowsUpdateClient
+14905 27/02/2020 6:53:33 p. m.  DCOM
+14906 27/02/2020 8:48:27 p. m.  DCOM
+
+
+PS C:\WINDOWS\system32> type eventlogsis.txt
+
+Index TimeGenerated             Source
+----- -------------             ------
+14857 26/02/2020 10:37:06 p. m. Microsoft-Windows-Kernel-Power
+14858 26/02/2020 10:40:19 p. m. Microsoft-Windows-DNS-Client
+14859 26/02/2020 10:42:16 p. m. Microsoft-Windows-DNS-Client
+14860 26/02/2020 10:43:03 p. m. Microsoft-Windows-DNS-Client
+14861 27/02/2020 12:05:18 a. m. Microsoft-Windows-Kernel-Power
+14862 27/02/2020 12:05:20 a. m. Microsoft-Windows-Kernel-Power
+14863 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-General
+14864 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-Power
+14865 27/02/2020 12:54:29 a. m. Microsoft-Windows-Kernel-Power
+14866 27/02/2020 12:54:35 a. m. Microsoft-Windows-Power-Troubleshooter
+14867 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14868 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14869 27/02/2020 12:55:09 a. m. Microsoft-Windows-WindowsUpdateClient
+14870 27/02/2020 12:56:00 a. m. Microsoft-Windows-Kernel-General
+14871 27/02/2020 12:56:04 a. m. Microsoft-Windows-Kernel-General
+14872 27/02/2020 12:56:13 a. m. Microsoft-Windows-WindowsUpdateClient
+14873 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14874 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14875 27/02/2020 12:56:21 a. m. Microsoft-Windows-WindowsUpdateClient
+14876 27/02/2020 12:56:26 a. m. Microsoft-Windows-WindowsUpdateClient
+14877 27/02/2020 12:56:26 a. m. Microsoft-Windows-WindowsUpdateClient
+14878 27/02/2020 12:56:48 a. m. Microsoft-Windows-Kernel-General
+14879 27/02/2020 12:57:00 a. m. Microsoft-Windows-WindowsUpdateClient
+14880 27/02/2020 12:57:05 a. m. Microsoft-Windows-WindowsUpdateClient
+14881 27/02/2020 12:59:29 a. m. Microsoft-Windows-Kernel-General
+14882 27/02/2020 12:59:36 a. m. Microsoft-Windows-WindowsUpdateClient
+14883 27/02/2020 12:59:45 a. m. Microsoft-Windows-WindowsUpdateClient
+14884 27/02/2020 1:00:13 a. m.  Microsoft-Windows-Kernel-General
+14885 27/02/2020 1:00:21 a. m.  Microsoft-Windows-WindowsUpdateClient
+14886 27/02/2020 1:00:21 a. m.  Microsoft-Windows-WindowsUpdateClient
+14887 27/02/2020 1:01:56 a. m.  Microsoft-Windows-Kernel-Power
+14888 27/02/2020 1:01:57 a. m.  Microsoft-Windows-Kernel-Power
+14889 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-General
+14890 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-Power
+14891 27/02/2020 9:17:32 a. m.  Microsoft-Windows-Kernel-Power
+14892 27/02/2020 9:17:33 a. m.  Microsoft-Windows-Kernel-Power
+14893 27/02/2020 9:17:37 a. m.  Microsoft-Windows-Power-Troubleshooter
+14894 27/02/2020 10:41:21 a. m. Microsoft-Windows-Kernel-Power
+14895 27/02/2020 10:41:23 a. m. Microsoft-Windows-Kernel-Power
+14896 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-General
+14897 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-Power
+14898 27/02/2020 2:44:07 p. m.  Microsoft-Windows-Kernel-Power
+14899 27/02/2020 2:44:08 p. m.  Microsoft-Windows-Kernel-Power
+14900 27/02/2020 2:44:09 p. m.  EventLog
+14901 27/02/2020 2:44:11 p. m.  Microsoft-Windows-Power-Troubleshooter
+14902 27/02/2020 5:22:52 p. m.  Microsoft-Windows-WindowsUpdateClient
+14903 27/02/2020 5:22:58 p. m.  Microsoft-Windows-WindowsUpdateClient
+14904 27/02/2020 5:23:13 p. m.  Microsoft-Windows-WindowsUpdateClient
+14905 27/02/2020 6:53:33 p. m.  DCOM
+14906 27/02/2020 8:48:27 p. m.  DCOM
+
+
+PS C:\WINDOWS\system32> history
+
+  Id CommandLine
+  -- -----------
+   1 transcript
+   2 Start-Transcript
+   3 help *item*
+   4 help New-Item
+   5 get-help new-item -Examples
+   6 New-Item
+   7 New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n es `n archivo `n numero `n uno"
+   8 New-Item -Path . -Name "archivo1.txt" -ItemType File -Value "Este `n es `n file `n numero `n dos"
+   9 New-Item -Path . -Name "archivo2.txt" -ItemType File -Value "Este `n es `n file `n numero `n dos"
+  10 type archivo1.txt
+  11 type archivo2.txt
+  12 help diff
+  13 Get-Help Compare-Object -Examples
+  14 diff -ReferenceObject $(get-content archivo1.txt) -DifferenceObject $(Get-Content archivo2.txt)
+  15 Get-Service | Export-Csv servicios.csv | Out-File
+  16 Get-Help Out-File -Detailed
+  17 Get-Help Export-Csv -Detailed
+  18 Get-Help Export-Clixml -Detailed
+  19 (Get-Culture).TextInfo.ListSeparator
+  20 help *random*
+  21 Get-Random
+  22 help *date*
+  23 Get-Date
+  24 (Get-Date).GetType()
+  25 Get-Date | Select-Object DayOfWeek
+  26 help *hotfix*
+  27 help *sort*
+  28 help Get-HotFix -Detailed
+  29 help Get-HotFix -Examples
+  30 Get- HotFix | sort InstalledOn | Select-Object InstalledOn, InstalledBy, HotFixId
+  31 Get-HotFix | sort InstalledOn | Select-Object InstalledOn, InstalledBy, HotFixId
+  32 Get-HotFix | sort Description | Select-Object description , HotFixId,InstalledOn | ConvertTo-Html | Out-File ...
+  33 help *log*
+  34 help Get-EventLog -Detailed
+  35 help sort -Detailed
+  36 Get-EventLog -LogName System -Newest 50 | sort -Property TimeGenerated,Index | select Index,TimeGenerated,Sou...
+  37 Get-EventLog -LogName System -Newest 50 | sort -Property TimeGenerated,Index | select Index,TimeGenerated,Sou...
+  38 type eventlogsis.txt
+
+
+PS C:\WINDOWS\system32> Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20200228010200
+**********************
