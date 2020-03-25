@@ -3,7 +3,8 @@
    de red? ¿Posee dicha clase algún método para liberar un préstamo de
    dirección (lease) DHCP?
    
-		Se puede emplear la clase ``win32_NetworkAdapterConfiguration`` y esta clase posee algunos metodos para liberar como ``RenewDHCPLease`` y ``RenewDHCPLeaseAll``
+		Se puede emplear la clase ``win32_NetworkAdapterConfiguration`` y esta clase posee algunos metodos para liberar
+		como ``RenewDHCPLease`` y ``RenewDHCPLeaseAll``
 ```PowerShell 
 		Get-CimInstance win32_NetworkAdapterConfiguration | select IP
 ```
@@ -21,8 +22,23 @@ los listados son iguales, se puede evidenciar al guardar la salida de cada uno e
 ```
 3. Empleando WMI, muestre una lista de servicios, que incluya su status actual,
    su modalidad de inicio, y las cuentas que emplean para hacer login.
+```PowerShell 
+		Get-WmiObject -ClassName Win32_Service | select name, status,startmode,startname
+```
+
 4. Empleando cmdlets de CIM, liste todas las clases del namespace
    ``SecurityCenter2``, que tengan **product** como parte del nombre.
+```PowerShell 
+		Get-CimClass -Namespace root/SecurityCenter2 | where -Filter {$_.CimClassName -like "*product*"}
+```
 5. Empleando cmdlets de CIM, y los resultados del ejercicio anterior, muestre
    los nombres de las aplicaciones antispyware instaladas en el sistema.
    También puede consultar si hay productos antivirus instalados en el sistema.
+``antispyware``
+```PowerShell 
+		Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiSpywareProduct | select displayName
+```
+``antivirus``
+```PowerShell 
+		Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiVirusProduct | select displayName
+```
