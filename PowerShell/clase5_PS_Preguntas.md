@@ -3,9 +3,9 @@
    de red? ¿Posee dicha clase algún método para liberar un préstamo de
    dirección (lease) DHCP?
 		Se puede emplear la clase ``win32_NetworkAdapterConfiguration`` y esta clase posee algunos metodos para liberar como ``RenewDHCPLease`` y ``RenewDHCPLeaseAll``
-		```PowerShell 
+```PowerShell 
 		Get-CimInstance win32_NetworkAdapterConfiguration | select IP
-		```
+```
 2. Despliegue una lista de parches empleando WMI (Microsoft se refiere a los
    parches con el nombre **quick-fix engineering**). Es diferente el listado al
    que produce el cmdlet ``Get-Hotfix``?
